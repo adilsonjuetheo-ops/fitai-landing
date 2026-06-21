@@ -155,7 +155,7 @@
     }
 
     .nav-logo-img {
-      height: 36px;
+      height: 44px;
       width: auto;
       display: block;
     }
@@ -171,7 +171,7 @@
     .hero-inner { max-width: 720px; }
 
     .hero-logo {
-      height: 72px;
+      height: 96px;
       width: auto;
       display: block;
       margin-bottom: 36px;
@@ -364,31 +364,28 @@
     }
     .plan-card.popular:hover { border-color: var(--primary); }
 
-    .pop-badge {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--primary);
-      color: #fff;
-      font-size: .7rem;
-      font-weight: 800;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      padding: 5px 18px;
-      border-radius: var(--radius-pill);
-      white-space: nowrap;
-    }
-
-    .plan-name {
-      font-size: .75rem;
+    .plan-badge {
+      display: inline-block;
+      font-size: .68rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--text-2);
-      margin-bottom: 18px;
+      letter-spacing: 1.5px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 14px;
     }
-    .plan-card.popular .plan-name { color: var(--primary); }
+    .plan-badge.badge-free    { background: rgba(255,255,255,.07); color: var(--text-2); }
+    .plan-badge.badge-popular { background: var(--primary); color: #fff; }
+    .plan-badge.badge-studio  { background: rgba(99,102,241,.15); color: #818cf8; border: 1px solid rgba(99,102,241,.3); }
+
+    .plan-name {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 12px;
+      letter-spacing: -.3px;
+    }
+    .plan-card.popular .plan-name { color: var(--text); }
 
     .plan-price {
       font-size: 2.6rem;
@@ -603,6 +600,37 @@
     footer a { color: var(--primary); }
     footer a:hover { text-decoration: underline; }
 
+    /* ===== WHATSAPP FLOAT ===== */
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 998;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: .88rem;
+      font-weight: 700;
+      padding: 13px 20px 13px 16px;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 4px 24px rgba(37,211,102,.35);
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .wa-float:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(37,211,102,.45);
+      color: #fff;
+    }
+    .wa-float svg { flex-shrink: 0; }
+    @media (max-width: 480px) {
+      .wa-float span { display: none; }
+      .wa-float { padding: 14px; border-radius: 50%; }
+    }
+
     /* ===== SCROLL ANIMATIONS ===== */
     .fiu {
       opacity: 0;
@@ -617,10 +645,15 @@
     .d4 { transition-delay: .38s; }
 
     /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .pricing { grid-template-columns: repeat(2, 1fr); }
+    }
+
     @media (max-width: 768px) {
       section { padding: 80px 0; }
 
       #nav { padding: 0 18px; }
+      .nav-logo-img { height: 36px; }
 
       .steps,
       .features,
@@ -628,12 +661,15 @@
 
       .step-arrow { display: none !important; }
 
+      .hero-logo  { height: 72px; }
       .hero-title { font-size: 2.4rem; letter-spacing: -1.5px; }
       .hero-row   { flex-direction: column; align-items: flex-start; }
 
       .form-box { padding: 28px 22px; }
 
-      .pricing-card.popular { margin-top: 0; }
+      .plan-card.popular { margin-top: 0; }
+
+      .wa-float { bottom: 20px; right: 20px; }
     }
   </style>
 </head>
@@ -794,7 +830,7 @@
 <!-- ========== PLANOS ========== -->
 <section id="planos">
   <div class="container">
-    <p class="section-tag">Planos</p>
+    <p class="section-tag">Planos e Preços</p>
     <h2 class="section-title">Simples e transparente</h2>
     <p class="section-sub">Sem pegadinhas, sem cobrança surpresa. Cancele quando quiser.</p>
 
@@ -802,6 +838,7 @@
 
       <!-- FREE -->
       <div class="card plan-card fiu d1">
+        <span class="plan-badge badge-free">Gratuito</span>
         <p class="plan-name">Free</p>
         <div class="plan-price">R$<em style="font-style:normal">0</em><sub>/mês</sub></div>
         <p class="plan-cycle">Para sempre gratuito</p>
@@ -809,15 +846,15 @@
         <ul class="plan-feats">
           <li>
             <svg class="ic-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            1 treino por mês
+            1 treino gerado por mês
           </li>
           <li>
             <svg class="ic-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            Export PDF do treino
+            Onboarding completo
           </li>
           <li>
             <svg class="ic-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            Questionário de perfil
+            Export PDF
           </li>
           <li class="dim">
             <svg class="ic-x" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -825,7 +862,7 @@
           </li>
           <li class="dim">
             <svg class="ic-x" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            Histórico completo
+            Histórico de cargas
           </li>
         </ul>
         <button class="btn-outline" onclick="scrollToForm()">Começar grátis</button>
@@ -833,7 +870,7 @@
 
       <!-- PRO -->
       <div class="card plan-card popular fiu d2">
-        <div class="pop-badge">Mais popular</div>
+        <span class="plan-badge badge-popular">Mais popular</span>
         <p class="plan-name">Pro</p>
         <div class="plan-price"><sup>R$</sup>19<span style="font-size:1.6rem;font-weight:900;letter-spacing:-1px">,90</span><sub>/mês</sub></div>
         <p class="plan-cycle">Cobrado mensalmente · cancele quando quiser</p>
@@ -849,11 +886,11 @@
           </li>
           <li>
             <svg class="ic-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            Substituição inteligente
+            Histórico completo de cargas
           </li>
           <li>
             <svg class="ic-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            <strong>Histórico completo</strong>
+            Substituição inteligente
           </li>
           <li>
             <svg class="ic-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
@@ -863,11 +900,12 @@
         <button class="btn-filled" onclick="scrollToForm()">Garantir acesso Pro</button>
       </div>
 
-      <!-- STUDIO -->
+      <!-- STUDIO 30 -->
       <div class="card plan-card fiu d3">
-        <p class="plan-name">Studio</p>
-        <div class="plan-price"><sup>R$</sup>99<sub>/mês</sub></div>
-        <p class="plan-cycle">Para academias e personal trainers</p>
+        <span class="plan-badge badge-studio">Academia</span>
+        <p class="plan-name">Studio 30</p>
+        <div class="plan-price"><sup>R$</sup>149<sub>/mês</sub></div>
+        <p class="plan-cycle">Para personal trainers · até 30 alunos</p>
         <hr class="plan-divider">
         <ul class="plan-feats">
           <li>
@@ -876,7 +914,11 @@
           </li>
           <li>
             <svg class="ic-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            <strong>Painel do personal trainer</strong>
+            Painel admin completo
+          </li>
+          <li>
+            <svg class="ic-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Todos recursos Pro p/ alunos
           </li>
           <li>
             <svg class="ic-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
@@ -884,11 +926,39 @@
           </li>
           <li>
             <svg class="ic-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            Relatórios de progresso
+            Suporte prioritário
+          </li>
+        </ul>
+        <button class="btn-outline" onclick="scrollToForm()">Falar com especialista</button>
+      </div>
+
+      <!-- STUDIO 60 -->
+      <div class="card plan-card fiu d4">
+        <span class="plan-badge badge-studio">Academia</span>
+        <p class="plan-name">Studio 60</p>
+        <div class="plan-price"><sup>R$</sup>249<sub>/mês</sub></div>
+        <p class="plan-cycle">Para academias · até 60 alunos</p>
+        <hr class="plan-divider">
+        <ul class="plan-feats">
+          <li>
+            <svg class="ic-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            <strong>Até 60 alunos</strong>
           </li>
           <li>
             <svg class="ic-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            Suporte prioritário
+            Painel admin completo
+          </li>
+          <li>
+            <svg class="ic-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Relatórios de engajamento
+          </li>
+          <li>
+            <svg class="ic-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Multi personal trainer
+          </li>
+          <li>
+            <svg class="ic-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Marca da academia no PDF
           </li>
         </ul>
         <button class="btn-outline" onclick="scrollToForm()">Falar com especialista</button>
@@ -959,6 +1029,14 @@
     </div>
   </div>
 </section>
+
+<!-- ========== WHATSAPP FLOAT ========== -->
+<a class="wa-float" href="https://wa.me/5533988866113" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+  </svg>
+  <span>Fale conosco</span>
+</a>
 
 <!-- ========== FOOTER ========== -->
 <footer>
